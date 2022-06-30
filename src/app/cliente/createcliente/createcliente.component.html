@@ -1,0 +1,231 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xl-7">
+        <div class="card">
+          <div class="card-header card-header-danger">
+            <h4 class="card-title">Crear o modificar Cliente</h4>
+            <p class="card-category">Completa la información del cliente:</p>
+          </div>
+          <div class="card-body" *ngIf="cliente">
+            <form #clienteForm="ngForm" (ngSubmit)="onSubmit(clienteForm)">
+              <div class="row">
+                <div class="col-md-6">
+                  <mat-form-field class="example-full-width">
+                    <input
+                      matInput
+                      class="cont"
+                      type="text"
+                      name="primer nombre"
+                      #primernombre="ngModel"
+                      [(ngModel)]="cliente.primernombre"
+                      required
+                      placeholder="Primer nombre"
+                    />
+                  </mat-form-field>
+                  <span
+                    class="form_error"
+                    *ngIf="primernombre.touched && !primernombre.valid"
+                  >
+                    Campo Requerido primernombre.
+                  </span>
+                </div>
+                <div class="col-md-6">
+                  <mat-form-field class="example-full-width">
+                    <input
+                      matInput
+                      class="cont"
+                      type="text"
+                      name="segundo nombre"
+                      #segundonombre="ngModel"
+                      [(ngModel)]="cliente.segundonombre"
+                      required
+                      placeholder="Segundo nombre"
+                    />
+                  </mat-form-field>
+                  <span
+                    class="form_error"
+                    *ngIf="segundonombre.touched && !segundonombre.valid"
+                  >
+                    Campo Requerido segundonombre.
+                  </span>
+                </div>
+                <div class="col-md-6">
+                  <mat-form-field class="example-full-width">
+                    <input
+                      matInput
+                      class="cont"
+                      type="text"
+                      name="primer apellido"
+                      #primerapellido="ngModel"
+                      [(ngModel)]="cliente.primerapellido"
+                      required
+                      placeholder="Primer apellido"
+                    />
+                  </mat-form-field>
+                  <span
+                    class="form_error"
+                    *ngIf="primerapellido.touched && !primerapellido.valid"
+                  >
+                    Campo Requerido primerapellido.
+                  </span>
+                </div>
+                <div class="col-md-6">
+                  <mat-form-field class="example-full-width">
+                    <input
+                      matInput
+                      class="cont"
+                      type="text"
+                      name="segundo apellidos"
+                      #segundoapellidos="ngModel"
+                      [(ngModel)]="cliente.segundoapellido"
+                      required
+                      placeholder="Segundo apellidos"
+                    />
+                  </mat-form-field>
+                  <span
+                    class="form_error"
+                    *ngIf="segundoapellidos.touched && !segundoapellidos.valid"
+                  >
+                    Campo Requerido segundo apellido.
+                  </span>
+                </div>
+                <div class="col-md-6">
+                  <mat-form-field class="example-full-width">
+                    <input
+                      matInput
+                      class="cont"
+                      type="number"
+                      name="documento"
+                      #documento="ngModel"
+                      [(ngModel)]="cliente.documento"
+                      required
+                      placeholder="Documento"
+                    />
+                  </mat-form-field>
+                  <span
+                    class="form_error"
+                    *ngIf="documento.touched && !documento.valid"
+                  >
+                    Campo Requerido documento.
+                  </span>
+                </div>
+                <div class="col-md-6">
+                  <mat-form-field class="example-full-width">
+                    <input
+                      matInput
+                      class="cont"
+                      type="number"
+                      name="telefono"
+                      #phone="ngModel"
+                      [(ngModel)]="cliente.phone"
+                      required
+                      placeholder="Telefono"
+                    />
+                  </mat-form-field>
+                  <span
+                    class="form_error"
+                    *ngIf="phone.touched && !phone.valid"
+                  >
+                    Campo Requerido phone.
+                  </span>
+                </div>
+                <div class="col-md-6">
+                  <mat-form-field class="example-full-width">
+                    <input
+                      matInput
+                      class="cont"
+                      type="text"
+                      name="direccion"
+                      #direccion="ngModel"
+                      [(ngModel)]="cliente.direccion"
+                      required
+                      placeholder="Direccion"
+                    />
+                  </mat-form-field>
+                  <span
+                    class="form_error"
+                    *ngIf="direccion.touched && !direccion.valid"
+                  >
+                    Campo Requerido direccion.
+                  </span>
+                </div>
+                <div class="col-md-6">
+                  <mat-form-field class="example-full-width">
+                    <input
+                      matInput
+                      class="cont"
+                      type="text"
+                      name="email"
+                      #email="ngModel"
+                      [(ngModel)]="cliente.email"
+                      required
+                      placeholder="Email"
+                    />
+                  </mat-form-field>
+                  <span
+                    class="form_error"
+                    *ngIf="email.touched && !email.valid"
+                  >
+                    Campo Requerido email.
+                  </span>
+                </div>
+                <!--
+
+
+                <div class="col-md-6" for="image">
+                  <span class="image" *ngIf="cliente.image" style="float: none">
+                    <img
+                      src="{{ url + 'get-imagecliente/' + cliente.image }}"
+                      width="100px"
+                    />
+                  </span>
+                  <input
+                    (change)="fileChangeEvent($event)"
+                    name="image"
+                    placeholder="Upload Image"
+                    type="file"
+                  />
+                </div>
+                -->
+              </div>
+
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="message success" *ngIf="status == 'success'">
+                    <h4>
+                      Ha funcionado correctamente
+
+                      <a [routerLink]="['/cliente']" style="color: #ffee07">
+                        <b>ver lista de clientes</b>
+                      </a>
+                    </h4>
+                  </div>
+
+                  <div
+                    class="message failed"
+                    *ngIf="status == 'failed'"
+                    style="font-size: 23px; color: #5a2fd0"
+                  >
+                    Cliente no pudo ser creado
+                  </div>
+                  <button
+                    mat-raised-button
+                    type="submit"
+                    value="Enviar"
+                    style="width: 100% !important"
+                    [disabled]="!clienteForm.form.valid"
+                    class="d-block btn btn-outline-light"
+                  >
+                    Enviar Cliente
+                  </button>
+                  <div class="clearfix"></div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

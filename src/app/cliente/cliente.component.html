@@ -1,0 +1,53 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-4">
+        <div
+          routerLinkActive="active"
+          *ngFor="let menuItem of menuItems"
+          class="nav-item"
+        >
+          <h3>Bienvenido</h3>
+          <button
+            type="button"
+            class="btn btn-light"
+            [routerLink]="[menuItem.path]"
+          >
+            {{ menuItem.title }}
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="card" id="transparent">
+        <h2>Listado de Clientes.</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div *ngFor="let cliente of clientes" class="col-lg-3 col-md-6 col-sm-6">
+        <div class="card">
+          <a [routerLink]="['/cliente', cliente.idcliente]">
+            <div class="card-header card-header-danger">
+              <h4 class="card-title">
+                {{ cliente.primernombre }} {{ cliente.segundonombre }}
+              </h4>
+              <p class="card-category">
+                {{ cliente.primerapellido }} {{ cliente.segundoapellido }}
+              </p>
+            </div>
+            <div class="card-body">
+              <div class="img">
+                <!--
+                    <img
+                    src="{{ url + 'get-imageDesign/' + design.image }}"
+                    *ngIf="design.image"
+                  />
+                  -->
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
